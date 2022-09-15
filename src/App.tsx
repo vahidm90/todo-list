@@ -9,12 +9,13 @@ class App extends React.Component<{}, {list: TodoList }> {
 
     constructor(props) {
         super(props);
-        this.state = {list: new TodoList()}
+        this.state = {list: new TodoList()};
+        this.onTodoAdd = this.onTodoAdd.bind(this);
     }
 
-    onTodoAdd: (newItem: IToDo) => void = item => {
+    onTodoAdd(newItem: IToDo): void {
         const list = this.state.list;
-        list.addItem({name: item.name, description: item.description})
+        list.addItem({name: newItem.name, description: newItem.description})
         this.setState({list});
     }
 

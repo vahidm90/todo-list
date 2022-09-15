@@ -8,9 +8,10 @@ export class TodoItemsList extends React.Component<{ items: TodoList; }, { items
     constructor(props) {
         super(props);
         this.state = {items: this.props.items.theList};
+        this.onTodoItemDelete = this.onTodoItemDelete.bind(this);
     }
 
-    onTodoItemDelete: (id: number) => void = id => {
+    onTodoItemDelete(id: number): void {
         const items = this.props.items;
         items.removeItem(id);
         this.setState({items: items.theList});
@@ -18,7 +19,8 @@ export class TodoItemsList extends React.Component<{ items: TodoList; }, { items
 
     render() {
         const items = this.state.items;
-        return items.map(item => (<TodoItem key={item.id} item={item} onDelete={() => this.onTodoItemDelete(item.id)}/>));
+        return items
+            .map(item => (<TodoItem key={item.id} item={item} onDelete={this.onTodoItemDelete.bind(this, item.id)}/>));
     }
 
 }
