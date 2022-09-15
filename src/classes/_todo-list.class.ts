@@ -1,6 +1,6 @@
 import {IToDo, ITodoListItem} from "../interfaces";
 
-export default class TodoList {
+export class TodoList {
 
     private static __uniqueId = 0;
     private _theList!: ITodoListItem[];
