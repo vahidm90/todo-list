@@ -1,1 +1,1 @@
-export * from './_todo-list.class';
+export * from './_list.class';
