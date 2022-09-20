@@ -58,13 +58,21 @@ export class TodoForm extends React.Component<ITodoFormProps, IToDo> {
     render() {
 
         const item = this.state;
+        let formClasses = 'todo-form add-form';
+        let btnTxt = 'Add';
+        let cancelBtn = null;
+        if (this._isEdit) {
+            formClasses = 'todo-form edit-form';
+            btnTxt = 'Apply';
+            cancelBtn = <button onClick={this.onCancelEdit}>Cancel</button>;
+        }
         return (
-            <form onSubmit={this.onFormSubmit} ref={this._formRef}>
-                <input type="text" placeholder="Task Name..." value={item.name} onChange={this.onNameChange} required/>
-                <textarea placeholder="Task Description..." value={item.description}
+            <form className={formClasses} onSubmit={this.onFormSubmit} ref={this._formRef}>
+                <input className="form-field name" type="text" placeholder="Task Name" value={item.name}
+                       onChange={this.onNameChange} required/>
+                <textarea className="form-field description" placeholder="Task Description" value={item.description}
                           onKeyDown={this.onTextAreaKeydown} onChange={this.onDescriptionChange}></textarea>
-                <button type="submit">{this._isEdit ? 'Apply' : 'Add'}</button>
-                {this._isEdit && <button onClick={this.onCancelEdit}>Cancel</button>}
+                <button className="btn submit-btn"  type="submit">{btnTxt}</button>{cancelBtn}
             </form>
         );
     }

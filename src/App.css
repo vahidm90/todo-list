@@ -1,3 +1,30 @@
 .App {
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.todo-item, .todo-form {
+  display: flex;
+  position: relative;
+  width: 98vw;
+  max-width: 400px;
+  flex-direction: column;
+}
+
+.action-buttons {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  transform: rotateX(90deg);
+  transition: transform .3s ease;
+  transform-origin: bottom;
+}
+
+.todo-item:hover .action-buttons {
+  transform: rotateX(0);
+}
+
+.action-buttons .btn:not(:last-child) {
+  margin-right: 8px;
 }
